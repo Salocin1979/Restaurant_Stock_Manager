@@ -1,0 +1,12 @@
+<h1 class="text-2xl font-bold"><%= @category.name %></h1>
+<p class="mt-4"><%= @category.description %></p>
+
+<!-- Example of showing associated items -->
+<% if @category.items.any? %>
+  <h2 class="text-xl mt-6">Items in this category:</h2>
+  <ul class="list-disc pl-6 mt-2">
+    <% @category.items.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  </ul>
+<% end %>

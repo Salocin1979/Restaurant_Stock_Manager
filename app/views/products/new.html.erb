@@ -1,0 +1,33 @@
+<!-- app/views/products/new.html.erb -->
+<div class="container mx-auto px-4 py-8">
+  <h2 class="text-2xl font-semibold mb-6">Ajouter un Nouveau Produit</h2>
+
+  <form action="/products" method="post" class="space-y-4">
+    <div>
+      <label for="name" class="block text-lg">Nom du Produit</label>
+      <input type="text" name="product[name]" id="name" class="w-full px-4 py-2 border rounded-md" required>
+    </div>
+    <div>
+      <label for="category" class="block text-lg">Catégorie</label>
+      <select name="product[category_id]" id="category" class="w-full px-4 py-2 border rounded-md" required>
+        <option value="">Choisir une catégorie</option>
+        <% Category.all.each do |category| %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div>
+      <label for="quantity" class="block text-lg">Quantité</label>
+      <input type="number" name="product[quantity]" id="quantity" class="w-full px-4 py-2 border rounded-md" required>
+    </div>
+    <div>
+      <label for="price" class="block text-lg">Prix d'Achat</label>
+      <input type="number" name="product[price]" id="price" class="w-full px-4 py-2 border rounded-md" required>
+    </div>
+
+    <div class="flex justify-between">
+      <button type="submit" class="px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Ajouter Produit</button>
+      <a href="/products" class="px-6 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Annuler</a>
+    </div>
+  </form>
+</div>

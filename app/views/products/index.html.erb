@@ -1,0 +1,38 @@
+<!-- app/views/products/index.html.erb -->
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between mb-4">
+    <!-- Recherche par nom de produit -->
+    <input type="text" placeholder="Rechercher un produit" class="px-4 py-2 border rounded-md" id="searchInput" oninput="filterProducts()">
+    <!-- Trier par -->
+    <div>
+      <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Trier par Prix</button>
+      <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Trier par Quantité</button>
+    </div>
+  </div>
+
+  <!-- Liste des produits -->
+  <table class="min-w-full bg-white border border-gray-200">
+    <thead>
+      <tr class="text-left">
+        <th class="px-4 py-2">Nom</th>
+        <th class="px-4 py-2">Catégorie</th>
+        <th class="px-4 py-2">Quantité</th>
+        <th class="px-4 py-2">Prix</th>
+        <th class="px-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="productsList">
+      <% @products.each do |product| %>
+        <tr>
+          <td class="px-4 py-2"><%= product.name %></td>
+          <td class="px-4 py-2"><%= product.category.name %></td>
+          <td class="px-4 py-2"><%= product.quantity %></td>
+          <td class="px-4 py-2"><%= number_to_currency(product.price) %></td>
+          <td class="px-4 py-2">
+            <a href="<%= edit_product_path(product) %>" class="text-blue-500 hover:underline">Modifier</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Stock Manager</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Hero Section -->
+  <section class="bg-cover bg-center h-96 flex items-center justify-center text-center text-[#F8F8F8]" style="background-image: url('https://media.istockphoto.com/id/1484852942/photo/smart-warehouse-inventory-management-system-concept.jpg?s=612x612&w=0&k=20&c=q5hzpG2i4A7iVLT7sseXdKIsVxClkLJrUlLsZJNIGMs=');">
+    <div>
+      <h1 class="text-4xl font-bold">Bienvenue dans le Gestionnaire de Stock</h1>
+      <p class="mt-4 text-lg">Gérez vos produits facilement et efficacement</p>
+      <a href="#overview" class="inline-block mt-6 bg-[#0A2E54] text-[#F8F8F8] px-6 py-2 rounded-lg text-lg">Explorer</a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div id="overview" class="container mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Résumé du Stock -->
+      <div class="bg-[#F8F8F8] p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+        <h2 class="text-2xl font-semibold text-[#0A2E54]">Résumé du Stock</h2>
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Stock Summary" class="mt-4 w-full h-48 object-cover rounded-md">
+        <p class="mt-4 text-lg">Nombre total de produits : <span class="font-bold text-[#0A2E54]"><%= @total_products %></span></p>
+        <p class="mt-2 text-lg">Produits en stock : <span class="font-bold text-green-600"><%= @products_in_stock %></span></p>
+      </div>
+
+      <!-- Alertes de Stock Faible -->
+      <div class="bg-red-50 p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+        <h2 class="text-2xl font-semibold text-red-700">Alertes de Stock Faible</h2>
+        <ul class="mt-4 space-y-2">
+          <% @low_stock_alerts.each do |product| %>
+            <li class="text-red-600">
+              <i class="fas fa-exclamation-triangle mr-2"></i>
+              <%= product.name %> - <%= product.quantity %> unités restantes
+            </li>
+          <% end %>
+        </ul>
+        <a href="/inventories" class="inline-block mt-4 bg-[#0A2E54] text-[#F8F8F8] px-6 py-2 rounded-lg">Voir l'inventaire</a>
+      </div>
+
+      <!-- Liens Rapides -->
+      <div class="bg-[#F8F8F8] p-6 rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
+        <h2 class="text-2xl font-semibold text-[#0A2E54]">Liens Rapides</h2>
+        <ul class="mt-4 space-y-2">
+          <li><a href="/categories" class="text-[#0A2E54] hover:underline">Voir toutes les catégories</a></li>
+          <li><a href="/inventories" class="text-[#0A2E54] hover:underline">Gérer l'inventaire</a></li>
+          <li><a href="/users/sign_in" class="text-[#0A2E54] hover:underline">Se connecter</a></li>
+        </ul>
+        <a href="/categories" class="inline-block mt-4 bg-[#0A2E54] text-[#F8F8F8] px-6 py-2 rounded-lg">Gérer les Catégories</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#0A2E54] text-[#F8F8F8] py-6">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2025 Restaurant Stock Manager | <a href="#" class="hover:text-gray-300">Privacy Policy</a> | <a href="#" class="hover:text-gray-300">Terms of Service</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
