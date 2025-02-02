@@ -1,4 +1,4 @@
-require "test_helper"
+require "rails/test_help"
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do

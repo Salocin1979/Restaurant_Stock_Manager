@@ -30,6 +30,5 @@ Rails.application.routes.draw do
   # Routes de fournisseurs
   resources :suppliers
 
-  get 'inventory_list', to: 'inventory#index', as: :inventory_list
-
+  get "inventory_list", to: "inventory#index", as: :inventory_lists
 end
