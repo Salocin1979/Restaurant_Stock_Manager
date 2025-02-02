@@ -2,22 +2,22 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
 
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [ :index, :show ]
 
   # Routes de produits
-  resources :products, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :products, only: [ :index, :show, :new, :create, :edit, :update ] do
     collection do
-      get 'search'
+      get "search"
     end
     member do
-      get 'discount'
+      get "discount"
     end
   end
 
   # Routes de commandes
-  resources :orders, only: [:index, :show, :create] do
+  resources :orders, only: [ :index, :show, :create ] do
     member do
-      get 'summary'
+      get "summary"
     end
   end
 
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   # Routes de fournisseurs
   resources :suppliers
 
+  resources :inventories
   # For a simple page (without model)
-get '/inventory', to: 'inventories#index', as: :inventory
-
+  get "/inventory", to: "inventories#index", as: :inventory
 end

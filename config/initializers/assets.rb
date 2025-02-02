@@ -4,10 +4,10 @@
 # Rails.application.config.assets.version = "1.0"
 
 Rails.application.config.assets.paths += [
-  Rails.root.join('app', 'assets', 'stylesheets'),
-  Rails.root.join('app', 'assets', 'images'),
-  Rails.root.join('app', 'assets', 'javascripts'),
-  Rails.root.join('app', 'assets', 'fonts')
+  Rails.root.join("app", "assets", "stylesheets"),
+  Rails.root.join("app", "assets", "images"),
+  Rails.root.join("app", "assets", "javascripts"),
+  Rails.root.join("app", "assets", "fonts")
 ]
 
 
